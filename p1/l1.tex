@@ -1,0 +1,203 @@
+\documentclass{amsart}
+
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{thmtools,thm-restate}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage[backend=biber,url=true,doi=true,eprint=false,style=alphabetic]{biblatex}
+\usepackage{enumitem,multicol}
+\usepackage[justification=centering,singlelinecheck=false]{caption}
+\usepackage{indentfirst}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{linegoal}
+\usepackage{csquotes}
+\usetikzlibrary{snakes,arrows,shapes}
+
+\addbibresource{references.bib}
+
+\makeatletter
+\def\subsection{\@startsection{subsection}{3}%
+  \z@{.5\linespacing\@plus.7\linespacing}{.1\linespacing}%
+  {\normalfont}}
+\makeatother
+
+\makeatletter
+\patchcmd{\@setauthors}{\MakeUppercase}{}{}{}
+\makeatother
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\Val}{\text{Val}}
+\DeclareMathOperator*{\Ch}{\text{Ch}}
+\DeclareMathOperator*{\Pa}{\text{Pa}}
+\DeclareMathOperator*{\Sc}{\text{Sc}}
+\newcommand{\ov}{\overline}
+\newcommand{\region}{\mathcal}
+
+\newcommand\defeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
+
+\newcommand{\algorithmautorefname}{Algorithm}
+\algrenewcommand\algorithmicrequire{\textbf{Input}}
+\algrenewcommand\algorithmicensure{\textbf{Output}}
+\algnewcommand{\LineComment}[1]{\State\,\(\triangleright\) #1}
+
+\captionsetup[table]{labelsep=space}
+
+\theoremstyle{plain}
+
+\newcounter{dummy-def}\numberwithin{dummy-def}{section}
+\newtheorem{definition}[dummy-def]{Definition}
+\newcounter{dummy-thm}\numberwithin{dummy-thm}{section}
+\newtheorem{theorem}[dummy-thm]{Theorem}
+\newcounter{dummy-prop}\numberwithin{dummy-prop}{section}
+\newtheorem{proposition}[dummy-prop]{Proposition}
+\newcounter{dummy-corollary}\numberwithin{dummy-corollary}{section}
+\newtheorem{corollary}[dummy-corollary]{Corollary}
+\newcounter{dummy-lemma}\numberwithin{dummy-lemma}{section}
+\newtheorem{lemma}[dummy-lemma]{Lemma}
+\newcounter{dummy-eg}\numberwithin{dummy-eg}{section}
+\newtheorem{example}[dummy-eg]{Example}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercício}
+\newtheorem{answer}{Resposta}
+
+\numberwithin{equation}{section}
+
+\newcommand{\set}[1]{\mathbf{#1}}
+\newcommand{\pr}{\mathbb{P}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\false}{\text{F}}
+\newcommand{\true}{\text{T}}
+\newcommand{\expected}{\mathbb{E}}
+\renewcommand{\implies}{\Rightarrow}
+
+\newcommand{\bigo}{\mathcal{O}}
+
+\setlength{\parskip}{1em}
+
+\lstset{frameround=fttt,
+	numbers=left,
+	breaklines=true,
+	keywordstyle=\bfseries,
+	basicstyle=\ttfamily,
+}
+
+\newcommand{\code}[1]{\lstinline[mathescape=true]{#1}}
+\newcommand{\mcode}[1]{\lstinline[mathescape]!#1!}
+\newcommand{\dset}[1]{\mathcal{#1}}
+
+\title{%
+  \noindent\rule{13cm}{1.0pt}\\
+  \vspace{0.2cm}
+  MAC0466\\
+  Teoria dos Jogos Algorítmica\\
+  Prova 1
+  \noindent\rule{13cm}{0.8pt}
+}
+\xdef\shorttitle{Prova 1 --- MAC0466}
+\author[]{\normalsize\textbf{Renato Lui Geh}\\\small NUSP\@: 8536030}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{exercise}{1}
+\setcounter{answer}{1}
+\begin{exercise}
+  No Jogo de Balanceamento de Carga, temos $n$ tarefas, cada uma com um peso $w_i$, e $m$ máquinas,
+  cada uma com uma velocidade $s_i$. Cada jogador escolhe a máquina onde vai sua tarefa. Mostre que
+  existe no máximo um equilíbrio de Nash totalmente misto para toda instância do Jogo de
+  Balanceamento de Carga. \textit{Dica:} Descreva as condições nas probabilidades $p_i^j$ impostas
+  por um equilíbrio de Nash totalmente misto na forma de um sistema de equações lineares e mostre
+  que tal sistema tem uma única solução. Deduza daí que há no máximo um equilíbrio destes.
+\end{exercise}
+\begin{answer}~\\
+
+  $n$ tarefas, $m$ máquinas
+
+  $w_i$: peso da tarefa $i$
+
+  $s_i$: velocidade da máquina $i$\\
+
+  Existe um equilíbrio $S^\star$ pelo Teorema de Nash, já que o jogo é finito. Queremos provar que
+  $S^\star$ é único.
+
+  A carga de uma máquina é dada por
+  \begin{equation*}
+    l_j = \sum_{i=1}^n \frac{w_i x_i^j}{s_j}
+  \end{equation*}
+  onde $x_i^j$ é uma variável aleatória e igual a 1 se $i$ escolhe a máquina $j$ e $x_i^j=0$ caso
+  contrário.
+
+  O custo esperado é
+  \begin{equation*}
+    c_i^j = \frac{w_i + \sum_{\substack{k\neq i\\k=1}}^n w_k p_k^j}{s_j}
+  \end{equation*}
+  de $i$ escolher $j$.
+
+  Tirando a esperança de $l_j$:
+
+  \begin{align*}
+    \expected[l_j] = \expected\left[\sum_{i=1}^n \frac{w_i x_i^j}{s_j}\right] = \sum_{i=1}^n
+      \expected\left[\frac{w_i x_i^j}{s_j}\right] = \sum_i\expected\left[\frac{w_i}{s_j}\right]
+      \expected[x_i^j]=\sum_i\expected\left[\frac{w_i}{s_j}\right] p_i^j=\sum_{i=1}^n
+      \frac{w_i}{s_j}p_i^j
+  \end{align*}
+
+  O custo $c_i^j$ então passa a ser:
+
+  \begin{align*}
+    c_i^j = \frac{w_i}{s_j} + \sum_{\substack{k\neq i\\k=1}}\frac{w_k}{s_j} p_k^j=\frac{w_i}{s_j}+
+      \expected[l_j]-\frac{w_i}{s_j}p_i^j=\frac{w_i}{s_j}(1-p_i^j)+\expected[l_j]\implies
+  \end{align*}
+  \begin{equation*}
+    \implies (c_i^j-\expected[l_j])\frac{s_j}{w_i}=1-p_i^j\implies p_i^j=1-c_i^j\frac{s_j}{w_i}+
+      \expected[l_j]\frac{s_j}{w_i}
+  \end{equation*}
+
+  Portanto cada $p_i^j$ é condicionado por:
+
+  \begin{equation*}
+    p_i^j=1-c_i^j\frac{s_j}{w_i}+\sum_{k=1}^n\frac{w_k}{s_j}p_k^j\frac{s_j}{w_i}=1-c_i^j
+      \frac{s_j}{w_i}+\sum_{k=1}^n\frac{w_k}{w_i}p_k^j
+  \end{equation*}
+  \begin{equation*}
+    p_i^j=1-c_i^j\frac{s_j}{w_i}+p_i^j+\sum_{\substack{k\neq i\\k=1}}^n\frac{w_k}{w_i}p_k^j\implies
+      -1+c_i^j \frac{s_j}{w_i}=\sum_{\substack{k\neq i\\k=1}}^n p_k^j
+  \end{equation*}
+
+  Resultando no seguinte sistema:
+
+  \begin{equation*}
+    \begin{cases}
+      \sum_{\substack{k\neq i\\k=1}}^n p_k^j = c_i^j\frac{s_j}{w_i}-1 & \quad 1\leq
+      i\leq n, 1\leq j\leq m \quad (\star)\\
+      \sum_{j=1}^m p_i^j = 1, & \quad 1\leq i\leq n \quad (\star\star)\\
+    \end{cases}
+  \end{equation*}
+
+  Em $(\star)$ temos uma equação de $n-1$ variáveis se fixarmos $i$ e $j$. No total, temos $nm$
+  equações de $n-1$ variáveis. Em $(\star\star)$ temos uma equação de $m$ variávels fixando $i$.
+  Portanto temos no total um sistema de $nm$ equações e $nm$ variáveis. Como a matriz formada pelas
+  equações é não-singular (já que $p_i^j>0$), então existe apenas uma solução para o sistema, e
+  portanto existe apenas um único equilibrio.
+
+  \hfill\qed%
+\end{answer}
+%--------------------------------------------------------------------------------------------------
+
+\printbibliography[]
+
+\end{document}
