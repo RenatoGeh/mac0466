@@ -41,7 +41,7 @@
 \deftranslation[to=brazilian]{Definition}{Definição}
 \deftranslation[to=brazilian]{definition}{definição}
 \deftranslation[to=brazilian]{Lemma}{Lema}
-\deftranslation[to=brazilian]{lemma}{lemma}
+\deftranslation[to=brazilian]{lemma}{lema}
 \deftranslation[to=brazilian]{Example}{Exemplo}
 \deftranslation[to=brazilian]{example}{exemplo}
 \usetheme{boxes}
@@ -51,6 +51,7 @@
 \setbeamertemplate{bibliography entry note}{}
 
 \setbeamertemplate{theorems}[ams style]
+\setbeamertemplate{caption}[numbered]{}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -59,6 +60,7 @@
 \DeclareMathOperator*{\Pa}{\text{Pa}}
 \DeclareMathOperator*{\Sc}{\text{Sc}}
 \DeclareMathOperator*{\PoA}{\text{PoA}}
+\newcommand{\cls}{\hat{C}}
 \newcommand{\ov}{\overline}
 \newcommand{\region}{\mathcal}
 
@@ -66,6 +68,7 @@
 
 \theoremstyle{plain}
 
+\newtheorem{lemma-cnt}{Lema}
 \newtheorem{proposition}{Proposição}
 \newtheorem{exercise}{Exercício}
 
@@ -466,13 +469,57 @@
 
   \textbf{Passos:}
   \begin{enumerate}
-    \item Tomar 3-CNF $\varphi=C_1\wedge C_2\wedge \cdots\wedge C_k$;
+    \item Tomar 3-CNF $\varphi=\cls_1\wedge\cls_2\wedge \cdots\wedge\cls_k$;
     \item Criar grafos $C_i$ que representam as conjunções $\hat{C}_i$;
     \item Mostrar que $C_i$ está em equilíbrio estrito se e somente se $\hat{C}_i$ é satisfatível
       (Lema 1);
     \item Juntar todos $C_i$ em $G$ mantendo consistência entre literais;
     \item Mostrar que $G$ está em equilíbrio estrito se e somente se $\varphi$ é satisfatível.
   \end{enumerate}
+\end{frame}
+
+\begin{frame}
+
+  {\color{blue} 1.}
+
+  Tome $\varphi=\cls_1\wedge\cls_2\wedge\cdots\wedge\cls_k$ uma 3-CNF\@. Queremos construir o grafo
+  $G$ a partir das cláusulas disjuntivas. Para isso vamos construir os ``pedaços'' $C_i$ de $G$ de
+  modo que $C_i$ corresponda a $\cls_i$.
+\end{frame}
+
+\begin{frame}
+
+  {\color{blue} 2.}
+
+  Vamos chamar de cláusulas \textit{gadget} os ``pedaços'' $C_i$. Os vértices extremos de $C_i$
+  representam os literais de $\cls_i$. Na Figura~\ref{fig:cls}, temos a cláusula $\cls=(x\vee
+  y\vee\ov{z})$.
+  \begin{figure}[h]
+    \centering\includegraphics[scale=0.4]{imgs/clause_gadget.png}
+    \captionsetup{justification=raggedright}
+    \caption{\label{fig:cls} Cláusula $\cls=(x\vee y\vee\ov{z})$ representada pela cláusula
+    \textit{gadget} $C$. Literais são pares de vértices e um literal ser satisfatível corresponde
+    ao par ser monocromático.}
+  \end{figure}
+  \vspace{-0.3in}
+  Vamos mostrar que se um literal é satisfatível, então o par de vértices representado em $C$ é
+  monocromático. Vamos chamar este par de literal \textit{gadget}.
+
+\end{frame}
+
+\begin{frame}
+
+  {\color{blue} 3.}
+  \begin{lemma-cnt}
+    Qualquer 2-coloração estritamente estável de uma cláusula \textit{gadget} tem um literal
+    \textit{gadget} monocromático. Além disso, qualquer coloração dos literal \textit{gadgets} de
+    uma cláusula \textit{gadget} que inclue um literal \textit{gadget} monocromático implica na
+    cláusula \textit{gadget} estar em equilíbrio estrito.
+  \end{lemma-cnt}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Demonstração (Lema 1)}
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------
