@@ -96,11 +96,11 @@
   \begin{block}{Jogos de coordenação:}
     Classe de jogos em que jogadores jogam cooperativamente. Jogador $i$ fazer a mesma ação que
     jogador $j$ gera um benefício para ambos jogadores.
-  \end{block}\p
+  \end{block}
 
   \begin{block}{Exemplos:}
     \begin{itemize}
-      \item Batalha dos sexos (visto em aula)\p
+      \item Batalha dos sexos (visto em aula)
       \item Caça ao cervo
     \end{itemize}
   \end{block}
@@ -110,12 +110,12 @@
   \begin{block}{Jogos de anti-coordenação:}
     Variante do jogo de coordenação em que jogador $i$ escolher mesma ação que jogador $j$ gera
     custo.
-  \end{block}\p
+  \end{block}
 
   \begin{block}{Exemplos:}
     \begin{itemize}
-      \item Mineração\p
-      \item Habilidades de empregados\p
+      \item Mineração
+      \item Habilidades de empregados
       \item Rotas de avião
     \end{itemize}
   \end{block}
@@ -127,7 +127,7 @@
       \item Fácil
       \item Matriz de utilidade/custo
     \end{itemize}
-  \end{block}\p
+  \end{block}
 
   \begin{block}{Mais de dois jogadores:}
     \begin{itemize}
@@ -145,19 +145,19 @@
     \{1,\ldots,k\}:\quad &\text{ações}\\
   \end{align*}
   \textbf{Utilidade:} número de vizinhos que têm ações diferentes\\
-  \textbf{Equilíbrio:} $v$ não tem incentivo para mudar ação dados vizinhos\p\\~\\
+  \textbf{Equilíbrio:} $v$ não tem incentivo para mudar ação dados vizinhos\\~\\
 
-  Parece com algo? \p \textbf{Coloração}
+  Parece com algo?\p{} \textbf{Coloração}
 \end{frame}
 
 \begin{frame}
   \frametitle{Objetivos:}
   \begin{enumerate}
     \item Para $k\geq 2$, existe algoritmo polinomial para achar $k$-coloração estável num grafo
-      não-direcionado.\p
-    \item PoA para $k$-coloração em grafos não-direcionado é $\Theta\left(\frac{k}{k-1}\right)$.\p
+      não-direcionado.
+    \item PoA para $k$-coloração em grafos não-direcionado é $\Theta\left(\frac{k}{k-1}\right)$.
     \item Para $k\geq 2$, descobrir se existe $k$-coloração estritamente estável num grafo
-      não-direcionado é NP-difícil.\p
+      não-direcionado é NP-difícil.
   \end{enumerate}
 
   Existe generalização do 3 para digrafos, mas vou mostrar apenas para grafos não-direcionados.
@@ -177,19 +177,19 @@
     \mu_c(v) \coloneqq \sum_{\{u,v\}\in E} 1_{\{c(u)\neq c(v)\}}
   \end{equation*}
 
-  O valor social de $G$ dada uma coloração $c$ é:
+  O bem-estar social de $G$ dada uma coloração $c$ é:
 
   \begin{equation*}
     W(G,c)\coloneqq\sum_{v\in V}\mu_c(v)
-  \end{equation*} 
+  \end{equation*}
 \end{frame}
 
 \begin{frame}
   Uma coloração $c$ é \textbf{estável} se nenhum vértice $v$ pode aumentar $\mu_c(v)$ mudando
-  $c(v)$.\p\\~\\
+  $c(v)$.\\~\\
 
   Uma coloração $c$ é \textbf{estritamente estável} se para todo $v\in V$, toda $c'\in C$, $c'\neq
-  c$ temos que $\mu_c(v)>\mu_{c'}(v)$. Senão, $c$ é \textbf{não-estrita}.\p\\~\\
+  c$ temos que $\mu_c(v)>\mu_{c'}(v)$. Senão, $c$ é \textbf{não-estrita}.\\~\\
 
   O PoA de $G$ é:
 
@@ -222,13 +222,13 @@
   \begin{align*}
     c:\quad &\text{coloração}\\
     \phi(c):\quad &\text{número de arestas coloridas apropriadamente}
-  \end{align*}\p
-  Note que $0\leq \phi(c)\leq |E|$. Vamos primeiro mostrar que $W(G,c)=2\phi(c)$.\\~\\\p
-  Fixa $v\in V$.\p
+  \end{align*}
+  Note que $0\leq \phi(c)\leq |E|$. Vamos primeiro mostrar que $W(G,c)=2\phi(c)$.\\~\\
+  Fixa $v\in V$.
   \begin{align*}
     &n_v:\quad \text{número de cores diferentes em $v$}\\
     &\phi(c)=\sum_{e\in E}1_{\{e\text{ apropriado}\}}
-  \end{align*}\p
+  \end{align*}
   Se $e$ é apropriado ($c(u)\neq c(v)$), então contamos $e$ duas vezes: $(u,v)$ e $(v,u)$.
 \end{frame}
 
@@ -236,17 +236,17 @@
   Somando todas as arestas apropriadas para todo $v$:
   \begin{equation*}
     \sum_{v\in V}\sum_{e=\{u,v\}\in E}1_{\{e\text{ apropriado}\}}=\sum_{v\in V}n_v=2\phi(c)
-  \end{equation*}\p
-  Mas $n_v$ é exatamente $\mu_c(v)$.\p
+  \end{equation*}
+  Mas $n_v$ é exatamente $\mu_c(v)$.
   \begin{equation*}
     \sum_{v\in V}n_v=2\phi(c)=\sum_{v\in V}\mu_c(v)=W(G,c)
-  \end{equation*}\p
+  \end{equation*}
   Note que $\phi(c)$ é uma função potencial exata, então esse é um jogo de potencial.
 \end{frame}
 
 \begin{frame}
   Dada uma coloração $c$, um vértice $v$ está \textit{infeliz} se $v$ tem mais vizinhos com mesma
-  cor que $v$ do que diferentes.\p
+  cor que $v$ do que diferentes.
 
   Para acharmos uma $k$-coloração estável em $G$ fazemos:
 
@@ -261,8 +261,8 @@
   Se $v$ é vértice infeliz, então mudar para $c'(v)$ vai sempre aumentar $\phi$. Aumentar $\phi$
   aumenta $W(G,c)$, pois $W(G,c)=2\phi$.
 
-  Como a cada iteração pelo menos uma aresta vai ser colorida de forma a aumentar $\phi$, então
-  depois de no máximo $|E|$ iterações, nenhum $v\in V$ estará infeliz.
+  Como a cada iteração pelo menos uma aresta vai ser colorida apropriadamente aumentando $\phi$,
+  então depois de no máximo $|E|$ iterações, nenhum $v\in V$ estará infeliz.
 
   Se nenhum vértice está infeliz, então nenhum vértice terá incentivo para mudar. Então a coloração
   é estável.
@@ -279,31 +279,207 @@
 
 \begin{frame}
   \frametitle{Demonstração (Proposição 2)}
-  Existem $k$ cores. Fixe vértice $v$ e coloração $c$. A utilidade $\mu_c(v)$ pode ser no máximo
-  $k-1$.
+
+  Primeiro mostramos um bound superior:
 
   \textbf{Princípio da casa dos pombos (PCP):} $n=l\cdot m+1$ objetos distribuídos em $m$
-  conjuntos, então pelo menos um conjunto terá $l+1$ objetos.
+  conjuntos, então pelo menos um conjunto terá pelo menos $l+1$ objetos.
 
-  Pelo PCP, todo vértice $v$ pode alcançar pelo menos $\frac{k-1}{k}\cdot\deg(v)$ usando o
-  algoritmo da Proposição 1. Então
+  Pelo PCP, todo vértice $v$ pode sempre alcançar $\frac{k-1}{k}\cdot\deg(v)$ usando o
+  algoritmo da Proposição 1. Supondo que todos alcançam tal máximo, então:
 
   \begin{equation*}
     \PoA(G)=\frac{\max_{c'\in C} W(G,c')}{\min_{c\in Q}W(G,c)}=\frac{\sum_{v\in
       V}\deg(v)}{\sum_{v\in V}\frac{k-1}{k}\cdot\deg(v)}=\frac{k}{k-1}
   \end{equation*}
-
-  é o PoA máximo.
 \end{frame}
 
 \begin{frame}
+  Para acharmos bound inferior, tome $G=(V,E)$ a junção de dois grafos completos $K^1_k$ e $K^2_k$
+  tal que
+  \begin{align*}
+    &V(K^1_k) = \{v_1,v_2,\ldots,v_k\},\\
+    &V(K^2_k) = \{v_{k+1},v_{k+2},\ldots,v_{2k}\},
+  \end{align*}
+  $v_i\in V$, e junte $K^1_k$ com $K^2_k$ por arestas $\{v_i,v_{i+k}\}$ para todo $k$.
+  \begin{figure}[h]
+    \centering\includegraphics[scale=0.35]{imgs/k5.png}
+    \captionsetup{justification=raggedright}
+    \caption{Com $k=5$ temos o grafo $G$ construído pela junção dos dois grafos completos $K^1_5$ e
+    $K^2_5$.~\cite{kun-et-al}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  Considere a seguinte coloração: para todo par de vértice $\{v_i,v_{i+k}\}$,
+  $c(v_i)=c(v_{i+k})=i$. A coloração $c$ é \textbf{mínima} e \textbf{estável}. Então
+
+  \begin{align*}
+    &\mu_c(v)=k-1,\\
+    &W(G,c)=\sum_{v\in V}\mu_c(v)=\sum_{j=1}^{|V|=2k} k-1=2k(k-1).\\
+  \end{align*}
+
+  \begin{itemize}
+    \item \textbf{Estável:} Todo vértice tem $k-1$ cores diferentes em seus vizinhos.
+      Cada clique $K_k$ precisa de pelo menos $k$ cores, senão não é estável.
+    \item \textbf{Mínima:} Única possível aresta não apropriadamente colorida é $\{v_i,v_{i+k}\}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  Tome outra coloração $c'$ tal que para cada par $\{v_i,v_{i+k}\}$, $c(v_i)=i$ e $c(v_{i+k})=i+1$.
+  A coloração $c'$ é \textbf{máxima}, e temos
+
+  \begin{align*}
+    &\mu_c(v)=k,\\
+    &W(G,c)=\sum_{v\in V}\mu_c(v)=\sum_{j=1}^{|V|=2k} k=2k^2.\\
+  \end{align*}
+
+  \begin{itemize}
+    \item \textbf{Estável:} Como é máxima, é estável.
+    \item \textbf{Máxima:} Cada vértice tem $k$ vizinhos de cores diferentes e
+  $\mu_c(v)=\deg(v)=k$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  Então coloração $c$ é máxima e $c'$ mínima e estável. Portanto
+
+  \begin{equation*}
+    \PoA=\frac{\max_{c'\in C}W(G,c')}{\min_{c\in Q}W(G,c)}=\frac{2k^2}{2k(k-1)}=\frac{k}{k-1}.
+  \end{equation*}
+
+  Então $\PoA=\Theta\left(\frac{k}{k-1}\right)$.
+
+  \hfill$\qed$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Colorações estritamente estáveis}
+  \begin{theorem}
+    Para todo $k\geq 2$, o problema de se determinar se o grafo não-direcionado $G$ tem uma
+    $k$-coloração estritamente estável é NP-completo.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \textbf{O problema está em NP\@:} dada um certificado de coloração $c$, para todo $v\in V$, verifique se
+  para todo $c'(v)=i,i\in\{1,\ldots,k\}$, temos que $\mu_{c'}(v)<\mu_c(v)$.
+
+  Vamos dividir em dois casos: $k\geq 3$ e $k=2$.
+
+  \textbf{Reduções:}
+  \begin{itemize}
+    \item \textbf{Caso 1:} ($k\geq 3$) k-coloração clássica
+    \item \textbf{Caso 2:} ($k=2$) 3-SAT
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \large\textbf{Caso 1:} $k\geq 3$
+
+  \normalsize
+  \begin{columns}[t]
+    \begin{column}{0.9\textwidth}
+      \begin{block}{Objetivo:}
+        Transformar $G$ em um grafo $G'$ em que achar equilíbrio estrito equivale a achar
+        $k$-coloração clássica.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.2in}
+
+  {\color{blue} Construção de $G'$}
+
+  Vamos construir grafo $G'$ a partir de $G$. Copie $G$ em $G'$. Para toda aresta $e=\{u,v\}\in
+  E(G')$, crie grafo $H_e$, onde $H_e$ é um grafo completo $K_{k-2}$.
+
+  Para todo $w\in V(H_e)$, crie arestas $e_1'=\{u,w\}$ e $e_2'=\{v,w\}$ de forma a criar um clique
+  $K_k$ com $H_e\cup\{u,v\}$.
+
+  Se existe vértice isolado $v\in V(G)$ (i.e.\ $\deg(v)\leq 1$), crie uma cópia de $K_{k-1}$ e
+  adicione arestas $\{v,w\}$, $w\in K_{k-1}$, em $G'$.
+\end{frame}
+
+\begin{frame}
+  Vamos mostrar que uma $k$-coloração clássica em $G'$ equivale a uma $k$-coloração clássica em
+  $G$, e que tal coloração equivale a um equilíbrio estrito em $G$.
+
+  {\color{blue} Colorindo $G'$}
+
+  Fixe uma $k$-coloração apropriada $\varphi$ de $G$. Aplique $\phi$ em todo vértice $v\in G'$ que
+  veio de $G$.
+
+  Para toda aresta $e=\{u,v\}\in E(G')$, colore $H_e$ com as $k-2$ cores diferentes de $u$ e $v$.
+  Agora o clique $K_k$ de $u$ e $v$ está em equilíbrio estrito e também é uma coloração apropriada.
+
+  Para vértices isolados, é suficiente colorir $K_{k-1}$ com as $k-1$ cores restantes diferentes da
+  cor do vértice isolado.
+\end{frame}
+
+\begin{frame}
+  \begin{columns}[t]
+    \begin{column}{0.9\textwidth}
+      \begin{block}{Objetivo:}
+        Transformar $G$ em um grafo $G'$ em que \textbf{achar equilíbrio estrito equivale a achar
+        $\mathbf{k}$-coloração clássica.}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.2in}
+
+  ($\impliedby$) Tal coloração é um equilíbrio estrito, já que para todo vértice $v\in V(G')$, $v$
+  é adjacente às $k-1$ outras cores. Mudar a cor de $v$ implica em $c(v)=v(w)$, $w\in V(H_e)$, o
+  que diminui $\mu_c(v)$.
+
+  (\;$\Longrightarrow$\;) Suponha que existe equilíbrio estrito $c$ com $k$ cores em $G'$. Então
+  nenhuma aresta $e=\{u,v\}$ que veio originalmente de $G$ pode ser monocromática ($c(u)=c(v)$).
+  Por que?
+\end{frame}
+
+\begin{frame}
+  Suponha $e=\{u,v\}$ monocromática. Então $c(u)=c(v)$. Existem $k-1$ cores a serem distribuídas em
+  $H_e$. Suponha que escolhemos vértices $w\in E(H_e)$ de forma a colorir $H_e$ apropriadamente.
+  Sobra uma cor $j$ não usada no clique $K_k$. Mas então $u$ tem incentivo para mudar $c(u)=j$ a
+  fim de aumentar $\mu_c(u)$. Portanto não é equilíbrio. Contradição.
+
+  Portanto, como $e$ não é monocromática, então $c$ é uma $k$-coloração clássica apropriada.
+
+  Disso temos que \textbf{equilíbrio estrito equivale a $\mathbf{k}$-coloração clássica}, e
+  portanto redução acaba para $k\geq 2$.
+\end{frame}
+
+\begin{frame}
+  \large\textbf{Caso 1:} $k=3$
+
+  \normalsize
+  \begin{columns}[t]
+    \begin{column}{0.9\textwidth}
+      \begin{block}{Objetivo:}
+        Mostrar que uma $k$-coloração estritamente estável em $G$ equivale a achar uma valoração
+        verdadeira de uma fórmula em 3-CNF\@.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.2in}
+
+  \textbf{Passos:}
+  \begin{enumerate}
+    \item Tomar 3-CNF $\varphi=C_1\wedge C_2\wedge \cdots\wedge C_k$;
+    \item Criar grafos $C_i$ que representam as conjunções $\hat{C}_i$;
+    \item Mostrar que $C_i$ está em equilíbrio estrito se e somente se $\hat{C}_i$ é satisfatível
+      (Lema 1);
+    \item Juntar todos $C_i$ em $G$ mantendo consistência entre literais;
+    \item Mostrar que $G$ está em equilíbrio estrito se e somente se $\varphi$ é satisfatível.
+  \end{enumerate}
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------
 
-\section[Referências]{Referências e Bibliografia}
+\section[Referências]{Referências}
 \begin{frame}[t,allowframebreaks]
-  \frametitle{Referências e Bibliografia}
+  \frametitle{Referências}
   \nocite{*}
   \printbibliography[]
 \end{frame}
