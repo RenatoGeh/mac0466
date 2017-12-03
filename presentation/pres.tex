@@ -76,6 +76,8 @@
 \newcommand{\pr}{\mathbb{P}}
 \newcommand{\eps}{\varepsilon}
 \renewcommand{\implies}{\Rightarrow}
+\newcommand{\gadget}{\textit{gadget}}
+\newcommand{\bcolor}[1]{{\color{blue} #1}}
 
 \setlength{\parskip}{1em}
 
@@ -520,6 +522,101 @@
 
 \begin{frame}
   \frametitle{Demonstração (Lema 1)}
+
+  Primeiro mostraremos que \textbf{toda coloração em que existe um literal \gadget{} é um
+  equilíbrio estrito}. A Figura~\autoref{fig:lemma-1} enumera todas as possíveis colorações em que
+  existe pelo menos um literal \gadget{} monocromático.
+
+  \begin{figure}[h]
+    \centering\includegraphics[scale=0.35]{imgs/lemma-1.png}
+    \captionsetup{justification=raggedright}
+    \caption{\label{fig:lemma-1}As cinco primeiras cláusulas \gadget{} tem algum literal \gadget{}
+    monocromático. Em todos temos um equilíbrio estrito. Estas cinco cláusulas \gadget{} enumeram
+    todas possíveis colorações com pelo menos um literal \gadget{} monocromático. A sexta imagem
+    mostra o caso em que os literais \gadget{} não são monocromáticos.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  Agora falta mostrar que \textbf{se não existe algum literal \gadget{} monocromático na coloração,
+  então ela não é estrita}.
+
+  Suponha que exista uma coloração $c$ estritamente estável e todos literais \gadget{} são
+  multicromáticos.
+
+  {\color{gray} (desenho na lousa)}
+
+  Chame $v_1$, $v_2$ e $v_3$ os vértices entre os literais. Chame $v_i^1,v_i^2$ os vizinhos de
+  $v_i$ que não são literais. Então $c(v_i^1)=c(v_i^2)\neq c(v_i)$, senão $v_i$ não está em
+  equilíbrio. Independentemente de $c(v_i)$, deve existir algum par $c(v_i^j)=c(v_p^q)$ com
+  $c(v_i)=c(v_p)$. Portanto $v_i^j$ e $v_p^q$ têm incentivo para mudar, e portanto $c$ não é
+  equilíbrio.
+
+  \hfill{}$\qed$
+\end{frame}
+
+\begin{frame}
+  Voltando para o Teorema 1. Mostramos passos \bcolor{1}, \bcolor{2} e \bcolor{3}. Vamos agora
+  mostrar o passo \bcolor{4}:
+
+  \normalsize
+  \begin{columns}[t]
+    \begin{column}{0.9\textwidth}
+      \begin{block}{Passo 4:}
+        Juntar todos $C_i$ em $G$ mantendo consistência entre literais.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{0.2in}
+
+  \bcolor{I.} Se uma cláusula \gadget{} $C_i$ tem o literal \gadget{} $x$ como monocromático, então
+  devemos garantir que, para todo $C_j$, $i\neq j$, se o literal \gadget{} $x$ também aparecer em
+  $C_j$, então ele deve ser monocromático. Da mesma forma, se $x$ não for monocromático, ele deve
+  ser não monocromático em todas outras cláusulas.
+
+  \bcolor{II.} Para $\ov{x}$, se $\ov{x}$ aparecer monocromático em uma cláusula $C_i$, então ele
+  deve aparecer não monocromático em $C_j$, e vice versa.
+\end{frame}
+
+\begin{frame}
+  Para \bcolor{I}, vamos construir um \textbf{literal \gadget{} de persistência}:
+
+  \begin{figure}[h]
+    \centering\includegraphics[scale=0.3]{imgs/persistence.png}
+    \captionsetup{justification=raggedright}
+    \caption{Em um literal \gadget{} de persistência, os vértices denotados por $x$ na esquerda
+    fazem parte do literal \gadget{} de $C_i$, e o mesmo ocorre na direita para $C_j$. Os dois
+    vértices centrais garantem que $x$ seja consistente em $C_i$ e $C_j$.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  Para \bcolor{II}, vamos construir um \textbf{literal \gadget{} de negação}:
+
+  \begin{figure}[h]
+    \centering\includegraphics[scale=0.3]{imgs/negation.png}
+    \captionsetup{justification=raggedright}
+    \caption{Num literal \gadget{} de negação, os dois vértices inferiores garantem que as cores
+    de $x$ e $\ov{x}$ sejam diferentes. Deste jeito, as duas cláusulas sempre terão colorações
+    diferentes em $x$ e $\ov{x}$.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+
+  {\color{blue}{5.}}
+
+  Se $\varphi$ é satisfatível, então todo $\hat{C}_i$ deve ser satisfatível. Pelo Lema 1, $C_i$ é
+  satisfatível se existe ao menos um literal monocromático, ou seja, tal literal é satisfatível.
+  Ainda pelo Lema 1, se existe um literal monocromático, então $C_i$ está em equilíbrio estrito.
+
+  Os literais \gadget{} de persistência e negação garantem consistência e portanto $\phi$ é
+  satisfatível se e somente se é uma coloração estritamente estável.
+
+  Como construir todos os \textit{gadgets} é polinomial, então temos uma redução polinomial de
+  3-SAT\@.
+
+  \hfill{}$\qed$
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------
