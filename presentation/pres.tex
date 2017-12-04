@@ -273,6 +273,10 @@
   é estável.
 
   \hfill$\qed$
+
+  {\color{red}\textbf{Problema!}}
+
+  {\color{gray} (contra-exemplo na lousa)}
 \end{frame}
 
 \begin{frame}
@@ -369,7 +373,7 @@
 \end{frame}
 
 \begin{frame}
-  \textbf{O problema está em NP\@:} dada um certificado de coloração $c$, para todo $v\in V$, verifique se
+  \textbf{O problema está em NP\@:} dado um certificado de coloração $c$, para todo $v\in V$, verifique se
   para todo $c'(v)=i,i\in\{1,\ldots,k\}$, temos que $\mu_{c'}(v)<\mu_c(v)$.
 
   Vamos dividir em dois casos: $k\geq 3$ e $k=2$.
@@ -413,8 +417,8 @@
 
   {\color{blue} Colorindo $G'$}
 
-  Fixe uma $k$-coloração apropriada $\varphi$ de $G$. Aplique $\phi$ em todo vértice $v\in G'$ que
-  veio de $G$.
+  Fixe uma $k$-coloração apropriada $\varphi$ de $G$. Aplique $\varphi$ em todo vértice $v\in G'$
+  que veio de $G$.
 
   Para toda aresta $e=\{u,v\}\in E(G')$, colore $H_e$ com as $k-2$ cores diferentes de $u$ e $v$.
   Agora o clique $K_k$ de $u$ e $v$ está em equilíbrio estrito e também é uma coloração apropriada.
@@ -456,7 +460,7 @@
 \end{frame}
 
 \begin{frame}
-  \large\textbf{Caso 1:} $k=3$
+  \large\textbf{Caso 2:} $k=2$
 
   \normalsize
   \begin{columns}[t]
