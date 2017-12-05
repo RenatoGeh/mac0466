@@ -467,7 +467,7 @@
     \begin{column}{0.9\textwidth}
       \begin{block}{Objetivo:}
         Mostrar que uma $k$-coloração estritamente estável em $G$ equivale a achar uma valoração
-        verdadeira de uma fórmula em 3-CNF\@.
+        verdadeira de uma 3-CNF\@.
       \end{block}
     \end{column}
   \end{columns}
@@ -553,8 +553,8 @@
   Chame $v_1$, $v_2$ e $v_3$ os vértices entre os literais. Chame $v_i^1,v_i^2$ os vizinhos de
   $v_i$ que não são literais. Então $c(v_i^1)=c(v_i^2)\neq c(v_i)$, senão $v_i$ não está em
   equilíbrio. Independentemente de $c(v_i)$, deve existir algum par $c(v_i^j)=c(v_p^q)$ com
-  $c(v_i)=c(v_p)$. Portanto $v_i^j$ e $v_p^q$ têm incentivo para mudar, e portanto $c$ não é
-  equilíbrio.
+  maior número de vizinhos iguais do que diferentes. Portanto $v_i^j$ e $v_p^q$ têm incentivo para
+  mudar, e portanto $c$ não é equilíbrio.
 
   \hfill{}$\qed$
 \end{frame}
@@ -621,6 +621,23 @@
   3-SAT\@.
 
   \hfill{}$\qed$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Grafos direcionados}
+
+  \begin{itemize}
+    \item Vértice mudar sua cor não necessariamente melhora bem-estar social;
+    \item Equilíbrio puro pode não existir;
+    \item NP-difícil para colorações estritas e não-estritas;
+  \end{itemize}
+
+  {\color{blue}Generalização do Teorema 1 para grafos direcionados:}
+
+  \begin{description}
+    \item[Para $k=2$:] redução do \textit{balanced unfriendly partition problem},
+    \item[Para $k\geq 3$:] redução do caso de $k=2$.
+  \end{description}
 \end{frame}
 
 %--------------------------------------------------------------------------------------------------
